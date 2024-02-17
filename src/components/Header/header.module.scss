@@ -1,0 +1,14 @@
+@import '../../styles/mixins/text';
+
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  height: var(--header-height);
+  background-color: var(--color-white);
+
+  .headerTitle {
+    @include textStyleLogoTitle;
+  }
+}
