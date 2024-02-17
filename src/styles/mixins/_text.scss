@@ -1,5 +1,19 @@
-@mixin textStyle1 {
+@mixin textStyleLogoTitle {
   font-size: 25px;
   font-weight: 700;
-  line-height: 30px;
+}
+
+@mixin textStyleButton {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+@mixin textStylePostTitle {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+@mixin textStylePostContent {
+  font-size: 14px;
+  font-weight: 400;
 }
