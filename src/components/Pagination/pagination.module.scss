@@ -1,0 +1,26 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-gray2);
+  gap: 4px;
+
+  li {
+    button {
+      color: var(--colot-black);
+      width: 28px;
+      height: 28px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  }
+
+  .active {
+    background-color: var(--color-Indigo);
+    color: var(--color-white);
+  }
+  .hidden {
+    display: none;
+  }
+}
