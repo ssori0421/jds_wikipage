@@ -1,0 +1,21 @@
+@import '../../../styles/mixins/text';
+
+.buttonWrapper {
+  display: flex;
+  flex-direction: row-reverse;
+  margin-bottom: 12px;
+}
+
+.postDetailsContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  height: 100%;
+  border: 1px solid var(--color-gray2);
+  border-radius: 8px;
+
+  h1 {
+    @include textStylePostDetailTitle;
+    margin: 20px 0;
+  }
+}
