@@ -4,12 +4,12 @@ import { IPost } from '@/types/post';
 import Link from 'next/link';
 
 const PostItem = ({ postData }: { postData: IPost }) => {
-  const { title, content } = postData;
+  const { title, subTitle } = postData;
 
   return (
     <Link className={styles.postItemContainer} href={`/post-details/${title}`}>
       <div className={styles.title}>{title}</div>
-      <div className={styles.content}>{content}</div>
+      <div className={styles.content}>{subTitle}</div>
     </Link>
   );
 };
