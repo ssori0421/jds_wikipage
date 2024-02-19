@@ -5,7 +5,7 @@
 
 @mixin textStyleButton {
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 @mixin textStylePostTitle {
@@ -16,4 +16,9 @@
 @mixin textStylePostContent {
   font-size: 14px;
   font-weight: 400;
+}
+
+@mixin textStylePostDetailTitle {
+  font-size: 24px;
+  font-weight: 700;
 }
