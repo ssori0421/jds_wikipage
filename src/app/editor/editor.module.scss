@@ -1,0 +1,27 @@
+.editorContainer {
+  .PostTitleContainer {
+    display: flex;
+    flex-direction: column;
+
+    .titleInput {
+      padding: 0;
+      margin-bottom: 12px;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--color-black);
+
+      background-color: transparent;
+      border: none;
+      outline: none;
+
+      &::placeholder {
+        color: var(--color-gray1);
+      }
+    }
+  }
+  .buttonWrapper {
+    margin: 12px 0;
+    display: flex;
+    justify-content: flex-end;
+  }
+}
