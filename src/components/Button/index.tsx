@@ -3,7 +3,7 @@ import styels from './button.module.scss';
 
 interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   icon?: JSX.Element;
-  children: string;
+  children: JSX.Element;
 }
 
 const Button = (props: IButtonProps) => {
