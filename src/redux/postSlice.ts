@@ -50,7 +50,6 @@ const postSlice = createSlice({
         throw Error;
       } else {
         const prevPost = state.posts[existingPostIndex];
-
         const newPost = {
           ...prevPost,
           title: action.payload.title,
