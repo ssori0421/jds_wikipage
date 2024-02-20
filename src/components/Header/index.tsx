@@ -16,7 +16,7 @@ const Header = () => {
   return (
     <div className={styles.headerContainer}>
       <Link href="/">
-        <div className={styles.headerTitle}>Flunty wiki</div>
+        <div className={styles.headerTitle}>Flunti wiki</div>
       </Link>
       {path === '/' && <Button onClick={onCreaeteClick}>작성하기</Button>}
     </div>
