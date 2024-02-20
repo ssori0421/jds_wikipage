@@ -15,6 +15,7 @@ const initialState: IPostState = {
     title: '',
     subTitle: '',
     content: '',
+    html: '',
     created_at: '',
     updated_at: '',
   },
@@ -29,7 +30,7 @@ const postSlice = createSlice({
       state.posts = localStoragePosts;
     },
 
-    CREATE_POST(state, action: { payload: { title: string; content: string } }) {
+    CREATE_POST(state, action: { payload: { title: string; content: string; html: string } }) {
       const newPost = {
         ...action.payload,
         id: Date.now().toString(),
@@ -41,7 +42,10 @@ const postSlice = createSlice({
       localStorage.setItem('posts', JSON.stringify(state.posts));
     },
 
-    UPDATE_POST(state, action: { payload: { param: string; title: string; content: string } }) {
+    UPDATE_POST(
+      state,
+      action: { payload: { param: string; title: string; content: string; html: string } }
+    ) {
       const existingPostIndex = state.posts.findIndex(
         (post) => post.title === action.payload.param
       );
@@ -55,6 +59,7 @@ const postSlice = createSlice({
           title: action.payload.title,
           subTitle: truncateText(convertMarkdownToPlainText(action.payload.content), 30),
           content: action.payload.content,
+          html: action.payload.html,
           updated_at: new Date().toISOString(),
         };
         state.posts[existingPostIndex] = newPost;
