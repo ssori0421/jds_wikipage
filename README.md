@@ -57,7 +57,7 @@ jds-wikipage
 
     - `icon, text, children` 등을 `프로퍼티`로 받아 프로젝트 전체에서 `재사용` 되도록 구현했습니다.
 
-    - `classnames` 라이브러리를 사용해 css의 확장이 가능하도록 구현했습니다.
+    - `classnames` 라이브러리를 사용해 `css의 확장`이 가능하도록 구현했습니다.
 
 ✅ **redux toolkit 라이브러리 사용해 전역 상태 관리**
 
