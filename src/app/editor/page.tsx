@@ -14,8 +14,11 @@ const mdParser = new MarkdownIt();
 
 const EditorPage = (props: { searchParams: { title?: string } }) => {
   const [postTitle, setPostTitle] = useState('');
-  const [postContent, setPostContent] = useState('');
-
+  const [postContent, setPostContent] = useState<{ text: string; html: string }>({
+    text: '',
+    html: '',
+  });
+  console.log('postContent', postContent);
   const router = useRouter();
 
   const currentPostParam = props.searchParams.title;
@@ -34,11 +37,10 @@ const EditorPage = (props: { searchParams: { title?: string } }) => {
       const updatePayload = {
         param: currentPostParam,
         title: postTitle,
-        content: postContent,
+        content: postContent.text,
+        html: postContent.html,
       };
       dispatch(UPDATE_POST(updatePayload));
-
-      router.push(`/post-details/${postTitle}`);
     } else {
       if (postTitle.trim() === '') {
         alert('제목을 작성해주세요.');
@@ -47,13 +49,15 @@ const EditorPage = (props: { searchParams: { title?: string } }) => {
 
       const createPayload = {
         title: postTitle,
-        content: postContent,
+        content: postContent.text,
+        html: postContent.html,
       };
       dispatch(CREATE_POST(createPayload));
     }
 
     setPostTitle('');
-    setPostContent('');
+    setPostContent({ text: '', html: '' });
+    router.push(`/post-details/${postTitle}`);
   };
 
   useEffect(() => {
@@ -65,7 +69,7 @@ const EditorPage = (props: { searchParams: { title?: string } }) => {
   useEffect(() => {
     if (data && currentPostParam) {
       setPostTitle(data.title);
-      setPostContent(data.content);
+      setPostContent({ text: data.content, html: data.html });
     }
   }, [data, currentPostParam]);
 
@@ -83,10 +87,10 @@ const EditorPage = (props: { searchParams: { title?: string } }) => {
         </div>
 
         <MdEditor
-          value={postContent}
+          value={postContent.text}
           style={{ height: '500px' }}
           onChange={(e) => {
-            setPostContent(e.text);
+            setPostContent(e);
           }}
           renderHTML={(text) => mdParser.render(text)}
         />
