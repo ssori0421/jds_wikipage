@@ -10,10 +10,13 @@
   display: flex;
   flex-direction: column;
   padding: 12px;
-  height: 100%;
   border: 1px solid var(--color-gray2);
   border-radius: 8px;
 
+  .dateWrapper {
+    font-size: 12px;
+    margin-bottom: 12px;
+  }
   h1 {
     @include textStylePostDetailTitle;
     margin: 20px 0;

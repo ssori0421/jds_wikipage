@@ -71,8 +71,10 @@
   a {
     font-style: italic;
     line-height: 1.2;
-    color: var(--color-indigo);
-    text-decoration: none;
+    font-weight: 500;
+    color: var(--color-blue);
+    text-decoration: underline;
+    padding: 0 2px;
   }
 
   code {
