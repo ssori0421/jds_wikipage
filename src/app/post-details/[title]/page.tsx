@@ -6,7 +6,7 @@ import MarkdownViewer from '@/components/MarkdownViewer';
 import { GET_POST, selectCurrentPost, selectPosts } from '@/redux/postSlice';
 import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
-import { replaceContentHtmlWordToLink } from '@/utils/text';
+import { autoLink } from '@/utils/text';
 import dayjs from 'dayjs';
 
 const PostDetailPage = (props: { params: { title: string } }) => {
@@ -28,12 +28,7 @@ const PostDetailPage = (props: { params: { title: string } }) => {
     dispatch(GET_POST({ title: currentPostParam }));
   }, [currentPostParam, dispatch]);
 
-  const newPostContent = replaceContentHtmlWordToLink(
-    currentPost.contentHtml,
-    posts,
-    currentUrl,
-    currentPostParam
-  );
+  const newPostContent = autoLink(currentPost.contentHtml, posts, currentUrl, currentPostParam);
 
   return (
     <>
