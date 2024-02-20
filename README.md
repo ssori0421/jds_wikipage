@@ -105,7 +105,7 @@ jds-wikipage
   <img src="https://img.shields.io/badge/MARKDOWN IT-FF0000?style=for-the-badge&logo=ZUSTAND&logoColor=black">
   </br>
         <img src="https://img.shields.io/badge/REACT MARKDOWN EDITOR LITE-008FC7?style=for-the-badge&logo=ZUSTAND&logoColor=black">
-          <img src="https://img.shields.io/badge/REHTPE-34567C?style=for-the-badge&logo=ZUSTAND&logoColor=black">
+          <img src="https://img.shields.io/badge/REHYPE-34567C?style=for-the-badge&logo=ZUSTAND&logoColor=black">
 
 </div>
 
