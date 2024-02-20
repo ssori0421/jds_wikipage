@@ -7,7 +7,7 @@ import { GET_POST, selectCurrentPost, selectPosts } from '@/redux/postSlice';
 import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
 import { autoLink } from '@/utils/text';
-import dayjs from 'dayjs';
+import { formatTime } from '@/utils/dayjs';
 
 const PostDetailPage = (props: { params: { title: string } }) => {
   const [currentUrl, setCurrentUrl] = useState('');
@@ -39,9 +39,11 @@ const PostDetailPage = (props: { params: { title: string } }) => {
       </div>
       <div className={styles.postDetailsContainer}>
         <h1>{currentPost.title}</h1>
-        <div className={styles.dateWrapper}>
-          <p>최초 작성 시간 : {dayjs(currentPost.created_at).format('YYYY-MM-DD HH:mm:ss')}</p>
-          <p>최근 수정 시간 : {dayjs(currentPost.updated_at).format('YYYY-MM-DD HH:mm:ss')}</p>
+        <div className={styles.dateContainer}>
+          <div className={styles.dateWrapper}>
+            <p>최초 작성 시간 : {formatTime(currentPost.created_at)}</p>
+            <p>최근 수정 시간 : {formatTime(currentPost.updated_at)}</p>
+          </div>
         </div>
         <MarkdownViewer postData={newPostContent} />
       </div>
