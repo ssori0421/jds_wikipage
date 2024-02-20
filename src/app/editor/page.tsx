@@ -14,11 +14,11 @@ const mdParser = new MarkdownIt();
 
 const EditorPage = (props: { searchParams: { title?: string } }) => {
   const [postTitle, setPostTitle] = useState('');
-  const [postContent, setPostContent] = useState<{ text: string; html: string }>({
-    text: '',
+  const [postContent, setPostContent] = useState<{ md: string; html: string }>({
+    md: '',
     html: '',
   });
-  console.log('postContent', postContent);
+
   const router = useRouter();
 
   const currentPostParam = props.searchParams.title;
@@ -37,8 +37,8 @@ const EditorPage = (props: { searchParams: { title?: string } }) => {
       const updatePayload = {
         param: currentPostParam,
         title: postTitle,
-        content: postContent.text,
-        html: postContent.html,
+        contentMd: postContent.md,
+        contentHtml: postContent.html,
       };
       dispatch(UPDATE_POST(updatePayload));
     } else {
@@ -49,14 +49,14 @@ const EditorPage = (props: { searchParams: { title?: string } }) => {
 
       const createPayload = {
         title: postTitle,
-        content: postContent.text,
-        html: postContent.html,
+        contentMd: postContent.md,
+        contentHtml: postContent.html,
       };
       dispatch(CREATE_POST(createPayload));
     }
 
     setPostTitle('');
-    setPostContent({ text: '', html: '' });
+    setPostContent({ md: '', html: '' });
     router.push(`/post-details/${postTitle}`);
   };
 
@@ -69,7 +69,7 @@ const EditorPage = (props: { searchParams: { title?: string } }) => {
   useEffect(() => {
     if (data && currentPostParam) {
       setPostTitle(data.title);
-      setPostContent({ text: data.content, html: data.html });
+      setPostContent({ md: data.contentMd, html: data.contentHtml });
     }
   }, [data, currentPostParam]);
 
@@ -87,12 +87,12 @@ const EditorPage = (props: { searchParams: { title?: string } }) => {
         </div>
 
         <MdEditor
-          value={postContent.text}
+          value={postContent.md}
           style={{ height: '500px' }}
           onChange={(e) => {
-            setPostContent(e);
+            setPostContent({ md: e.text, html: e.html });
           }}
-          renderHTML={(text) => mdParser.render(text)}
+          renderHTML={(md) => mdParser.render(md)}
         />
         <div className={styles.buttonWrapper}>
           <Button>저장하기</Button>

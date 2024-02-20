@@ -13,9 +13,8 @@ const PostDetailPage = (props: { params: { title: string } }) => {
   const [currentUrl, setCurrentUrl] = useState('');
 
   const dispatch = useDispatch();
-  const currentPostParam = decodeURIComponent(props.params.title);
 
-  console.log('currentPostParam', currentPostParam);
+  const currentPostParam = decodeURIComponent(props.params.title);
 
   const posts = useSelector(selectPosts);
   const currentPost = useSelector(selectCurrentPost);
@@ -30,7 +29,7 @@ const PostDetailPage = (props: { params: { title: string } }) => {
   }, [currentPostParam, dispatch]);
 
   const newPostContent = replaceContentHtmlWordToLink(
-    currentPost.html,
+    currentPost.contentHtml,
     posts,
     currentUrl,
     currentPostParam
