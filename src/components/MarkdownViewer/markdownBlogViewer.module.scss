@@ -81,7 +81,7 @@
     padding: 0 4px;
     font-family: 'Roboto Mono', monospace;
     font-weight: 600;
-    color: var(--color-indigo);
+    color: var(--color-indigo1);
     border-radius: 4px;
   }
 
@@ -89,7 +89,7 @@
     padding: 1rem 1rem 1rem 2rem;
     margin: 2rem 0;
     background: var(--color-gray2);
-    border-left: 8px solid var(--color-indigo);
+    border-left: 8px solid var(--color-indigo1);
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
   }
@@ -101,7 +101,7 @@
     line-height: 28px;
     word-break: break-word;
     border-radius: 0;
-    background: var(--color-gray2);
+    background: var(--color-indigo2);
     code {
       padding: 0 4px;
       font-family: 'Roboto Mono', monospace;

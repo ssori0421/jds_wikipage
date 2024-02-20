@@ -13,12 +13,21 @@
   border: 1px solid var(--color-gray2);
   border-radius: 8px;
 
-  .dateWrapper {
-    font-size: 12px;
-    margin-bottom: 12px;
-  }
   h1 {
     @include textStylePostDetailTitle;
     margin: 20px 0;
+  }
+
+  .dateContainer {
+    display: flex;
+    flex-direction: row-reverse;
+    .dateWrapper {
+      @include textStyleDate;
+      display: flex;
+      flex-direction: column;
+      color: var(--color-gray1);
+      margin-bottom: 12px;
+      gap: 4px;
+    }
   }
 }
