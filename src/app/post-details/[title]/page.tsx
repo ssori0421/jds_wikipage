@@ -29,11 +29,13 @@ const PostDetailPage = (props: { params: { title: string } }) => {
     dispatch(GET_POST({ title: currentPostParam }));
   }, [currentPostParam, dispatch]);
 
+  if (!currentPost) return null;
+
   const newPostContent = autoLink(currentPost.contentHtml, posts, currentUrl, currentPostParam);
 
   return (
     <>
-      {currentPost.contentHtml ? (
+      {currentPost.title ? (
         <>
           <div className={styles.buttonWrapper}>
             <Button>

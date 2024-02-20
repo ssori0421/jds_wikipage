@@ -41,9 +41,17 @@ const EditorPage = (props: { searchParams: { title?: string } }) => {
         contentHtml: postContent.html,
       };
       dispatch(UPDATE_POST(updatePayload));
+      setPostTitle('');
+      setPostContent({ md: '', html: '' });
+      router.push(`/post-details/${postTitle}`);
     } else {
       if (postTitle.trim() === '') {
         alert('제목을 작성해주세요.');
+        return;
+      }
+
+      if (postContent.md.trim() === '') {
+        alert('내용을 작성해주세요.');
         return;
       }
 
@@ -53,11 +61,10 @@ const EditorPage = (props: { searchParams: { title?: string } }) => {
         contentHtml: postContent.html,
       };
       dispatch(CREATE_POST(createPayload));
+      setPostTitle('');
+      setPostContent({ md: '', html: '' });
+      router.push(`/post-details/${postTitle}`);
     }
-
-    setPostTitle('');
-    setPostContent({ md: '', html: '' });
-    router.push(`/post-details/${postTitle}`);
   };
 
   useEffect(() => {

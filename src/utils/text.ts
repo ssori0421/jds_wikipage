@@ -30,6 +30,9 @@ export const autoLink = (
   currentUrl: string,
   excludeText?: string
 ): string => {
+  if (contentHtml.length === 0) {
+    return '';
+  }
   // contentHtml이 문자열이 아니거나 빈 문자열이면 빈 문자열을 반환
   if (typeof contentHtml !== 'string' || contentHtml.trim() === '') {
     return '';
