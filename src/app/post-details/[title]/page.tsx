@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
 import { autoLink } from '@/utils/text';
 import { formatTime } from '@/utils/dayjs';
+import Loader from '@/components/Loader';
 
 const PostDetailPage = (props: { params: { title: string } }) => {
   const [currentUrl, setCurrentUrl] = useState('');
@@ -32,21 +33,27 @@ const PostDetailPage = (props: { params: { title: string } }) => {
 
   return (
     <>
-      <div className={styles.buttonWrapper}>
-        <Button>
-          <Link href={`/editor?title=${currentPostParam}`}>수정하기</Link>
-        </Button>
-      </div>
-      <div className={styles.postDetailsContainer}>
-        <h1>{currentPost.title}</h1>
-        <div className={styles.dateContainer}>
-          <div className={styles.dateWrapper}>
-            <p>최초 작성 시간 : {formatTime(currentPost.created_at)}</p>
-            <p>최근 수정 시간 : {formatTime(currentPost.updated_at)}</p>
+      {currentPost.contentHtml ? (
+        <>
+          <div className={styles.buttonWrapper}>
+            <Button>
+              <Link href={`/editor?title=${currentPostParam}`}>수정하기</Link>
+            </Button>
           </div>
-        </div>
-        <MarkdownViewer postData={newPostContent} />
-      </div>
+          <div className={styles.postDetailsContainer}>
+            <h1>{currentPost.title}</h1>
+            <div className={styles.dateContainer}>
+              <div className={styles.dateWrapper}>
+                <p>최초 작성 시간: {formatTime(currentPost.created_at)}</p>
+                <p>최근 수정 시간: {formatTime(currentPost.updated_at)}</p>
+              </div>
+            </div>
+            <MarkdownViewer postData={newPostContent} />
+          </div>
+        </>
+      ) : (
+        <Loader type="component" text="글을 불러오고 있습니다." />
+      )}
     </>
   );
 };

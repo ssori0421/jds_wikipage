@@ -1,10 +1,11 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styles from './postList.module.scss';
 import PostItem from '../PostItem';
 import Pagination from '@/components/Pagination';
-import { useSelector, useDispatch } from 'react-redux';
-import { INIT_POSTS, selectPosts } from '@/redux/postSlice';
+import { useSelector } from 'react-redux';
+import { selectPosts } from '@/redux/postSlice';
+import Loader from '@/components/Loader';
 
 const PostList = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -19,10 +20,16 @@ const PostList = () => {
 
   return (
     <>
-      <div className={styles.PostListContiner}>
-        {currentPagePosts.length !== 0 &&
-          currentPagePosts.map((post) => <PostItem key={post.id} postData={post} />)}
-      </div>
+      {currentPagePosts.length !== 0 ? (
+        <div className={styles.PostListContiner}>
+          {currentPagePosts.map((post) => (
+            <PostItem key={post.id} postData={post} />
+          ))}
+        </div>
+      ) : (
+        <Loader type="component" text="목록을 불러오고 있습니다." />
+      )}
+
       {currentPagePosts.length !== 0 && (
         <Pagination
           currentPage={currentPage}
