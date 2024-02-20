@@ -22,3 +22,8 @@
   font-size: 24px;
   font-weight: 700;
 }
+
+@mixin textStyleDate {
+  font-size: 12px;
+  font-weight: 500;
+}
